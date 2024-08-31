@@ -16,11 +16,20 @@
       </v-sheet>
     </v-col>
     <v-col col="3">
-      <v-sheet class="pa-1 ma-1"> <input type="range" min="0" max="100" value="50" /> </v-sheet
-    ></v-col>
+      <v-slider thumb-label="always" min="0" max="100" step="1" v-model="criteria.mark" />
+      <div style="margin-top: -1.5em" class="text-caption d-flex justify-center">Mark</div>
+    </v-col>
+    <v-col col="3">
+      <v-slider thumb-label="always" min="0" max="2" step="0.1" v-model="criteria.coefficient" />
+      <div style="margin-top: -1.5em" class="text-caption d-flex justify-center">
+        How it matters
+      </div>
+    </v-col>
   </v-row>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 defineProps(['criteria'])
 </script>
