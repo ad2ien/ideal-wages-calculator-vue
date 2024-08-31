@@ -18,7 +18,7 @@ export type CoefParam = {
 
 export type Criteria = {
   id: string
-  criteriaDefinition: CriteriaDescription
+  description: CriteriaDescription
   label: string
   coefficient: number
   mark: number
@@ -31,14 +31,22 @@ export function jsonToResponseCriteria(jsonData: any): ResponseCriteria[] {
     id: item.id,
     label: item.label,
     defaultCoefficient: item.coefficient,
-    description: item.description
+    description: {
+      general: item.description.general,
+      min: item.description.min,
+      max: item.description.max
+    }
   }))
 }
 
 export function criteriasFromResponse(responseCriterias: ResponseCriteria[]): Criteria[] {
   return responseCriterias.map((item) => ({
     id: item.id,
-    criteriaDefinition: item.description,
+    description: {
+      general: item.description.general,
+      min: item.description.min,
+      max: item.description.max
+    },
     label: item.label,
     coefficient: item.defaultCoefficient,
     mark: 0

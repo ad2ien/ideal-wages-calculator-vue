@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Criteria from './Criteria.vue'
+import CriteriaBox from './CriteriaBox.vue'
 import { useAlertStore } from '@/stores/alert'
-import Alert from './Alert.vue'
+import AlertBox from './AlertBox.vue'
 import { doInit } from './models/init'
 import { useWageStore } from './stores/wage'
 
@@ -40,8 +40,8 @@ doInit()
 
       <v-main>
         <v-container fluid>
-          <Alert />
-          <Criteria v-for="crit in wageStore.criterias" :criteria="crit" />
+          <AlertBox />
+          <CriteriaBox v-for="crit in wageStore.criterias" :key="crit.id" :criteria="crit" />
         </v-container>
       </v-main>
     </v-layout>

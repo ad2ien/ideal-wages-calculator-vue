@@ -17,11 +17,11 @@ async function getCriterias(wageStore: any) {
     const data = await response.json()
     const res = jsonToResponseCriteria(data)
     const res2 = criteriasFromResponse(res)
-    wageStore.initCriterias(res2)
     console.log(res2)
+    wageStore.initCriterias(res2)
   } catch (err) {
     console.error(err)
-  } finally {
+    // TODO warning box
   }
 }
 
@@ -33,6 +33,5 @@ async function fetchPresets() {
     const data = await response.json()
   } catch (err) {
     console.error(err)
-  } finally {
   }
 }

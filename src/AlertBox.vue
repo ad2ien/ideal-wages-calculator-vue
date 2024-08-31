@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useAlertStore } from '@/stores/alert'
-import { ref } from 'vue'
 
 const alertStore = useAlertStore()
 </script>
