@@ -1,6 +1,6 @@
 <template>
   <v-row align="center" justify="center" no-gutters>
-    <v-col cols="6">
+    <v-col cols="12" md="6">
       <!-- <pre>{{ criteria.description?.general }}</pre> -->
       <v-sheet class="pa-1 ma-1">
         <v-card :title="criteria.id + criteria.label">
