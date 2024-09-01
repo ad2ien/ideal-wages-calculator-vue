@@ -37,7 +37,7 @@ function toggleTheme() {
 </script>
 
 <template>
-  <v-card class="mx-auto" max-width="1000">
+  <v-card class="mx-auto" max-width="1200">
     <v-layout>
       <v-app-bar>
         <v-app-bar-title>Ideal Wage Calculator 💸</v-app-bar-title>
