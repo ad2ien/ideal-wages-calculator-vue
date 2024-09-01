@@ -26,7 +26,14 @@
       <div style="margin-top: -1.5em" class="text-caption d-flex justify-center">Mark</div>
     </v-col>
     <v-col col="3">
-      <v-slider thumb-label="always" min="0" max="2" step="0.1" v-model="criteria.coefficient" />
+      <v-slider
+        thumb-label="always"
+        min="0"
+        max="2"
+        step="0.1"
+        v-model="criteria.coefficient"
+        @update:modelValue="updateCriteria"
+      />
       <div style="margin-top: -1.5em" class="text-caption d-flex justify-center">
         How it matters
       </div>
