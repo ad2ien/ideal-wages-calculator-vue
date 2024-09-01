@@ -24,6 +24,7 @@ The result here : <https://ad2ien.github.io/ideal-wages-calculator-vue/>
 - [Vue.js](https://vuejs.org)
 - [vuetifyjs](https://vuetifyjs.com)
 - [Typescript](https://www.typescriptlang.org)
+- [Vite](https://vitejs.dev/)
 
 ## Run
 
