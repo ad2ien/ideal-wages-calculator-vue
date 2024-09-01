@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, toRefs } from 'vue'
 import CriteriaBox from './CriteriaBox.vue'
 import AlertBox from './AlertBox.vue'
 import { doInit } from './models/init'
@@ -9,6 +9,7 @@ import { usePresetStore } from './stores/presets'
 const loading = ref(true)
 
 const wageStore = useWageStore()
+const { baseWage } = toRefs(wageStore)
 const presetStore = usePresetStore()
 doInit()
 
@@ -16,6 +17,7 @@ function handlePreset(value: any) {
   const marksPreset = presetStore.getMarks()
   if (marksPreset) {
     wageStore.setPreset(marksPreset!!)
+    wageStore.updateWage()
   }
   loading.value = false
 }
@@ -58,8 +60,8 @@ function handlePreset(value: any) {
                 label="Base wage"
                 :hideInput="false"
                 :step="10"
-                inset
-                :value="wageStore.baseWage"
+                v-model="baseWage"
+                @update:modelValue="wageStore.updateWage()"
               ></v-number-input>
             </v-col>
             <v-col cols="4">
@@ -70,7 +72,7 @@ function handlePreset(value: any) {
                 @update:modelValue="handlePreset"
               />
             </v-col>
-            <v-col cols="4">Then you should get: {{}}</v-col>
+            <v-col cols="4">Then you should get: {{ wageStore.computedWage }} €</v-col>
           </v-row>
 
           <CriteriaBox v-for="crit in wageStore.criterias" :key="crit.id" :criteria="crit" />

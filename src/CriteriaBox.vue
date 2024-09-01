@@ -15,7 +15,14 @@
       </v-sheet>
     </v-col>
     <v-col col="3">
-      <v-slider thumb-label="always" min="0" max="100" step="1" v-model="criteria.mark" />
+      <v-slider
+        thumb-label="always"
+        min="0"
+        max="100"
+        step="1"
+        v-model="criteria.mark"
+        @update:modelValue="updateCriteria"
+      />
       <div style="margin-top: -1.5em" class="text-caption d-flex justify-center">Mark</div>
     </v-col>
     <v-col col="3">
@@ -28,5 +35,14 @@
 </template>
 
 <script setup lang="ts">
-defineProps(['criteria'])
+import type { Criteria } from './models/types'
+import { useWageStore } from './stores/wage'
+
+defineProps(['criteria']) as Criteria
+
+function updateCriteria() {
+  console.log('updateCriteria')
+  const wageStore = useWageStore()
+  wageStore.updateWage()
+}
 </script>

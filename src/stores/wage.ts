@@ -1,10 +1,14 @@
 import type { CoefParam, Criteria } from '@/models/types'
+import { computeWage } from '@/models/utils'
 import { defineStore } from 'pinia'
 import { ref, toRaw } from 'vue'
 
 export const useWageStore = defineStore('wage', () => {
   const baseWage = ref(700)
   const criterias = ref([] as Criteria[])
+
+  const computedWage = ref(0)
+  // const computedWage = computed(() => computeWage(baseWage.value, criterias.value))
 
   function initCriterias(criteriasV: Criteria[]) {
     criterias.value = criteriasV
@@ -29,5 +33,20 @@ export const useWageStore = defineStore('wage', () => {
     })
   }
 
-  return { baseWage, criterias, initCriterias, getCriterias, setBaseWage, setCriteria, setPreset }
+  function updateWage() {
+    console.log('updateWage !! ')
+    computedWage.value = computeWage(baseWage.value, criterias.value)
+  }
+
+  return {
+    baseWage,
+    criterias,
+    initCriterias,
+    getCriterias,
+    setBaseWage,
+    setCriteria,
+    setPreset,
+    computedWage,
+    updateWage
+  }
 })

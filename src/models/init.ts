@@ -16,6 +16,7 @@ export async function doInit() {
   } else {
     // warning box
   }
+  wageStore.updateWage()
 }
 
 async function getCriterias(wageStore: any) {
