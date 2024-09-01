@@ -1,5 +1,7 @@
 # Ideal Wages Calculator (vue.js) 💸
 
+![Check workflow status](https://img.shields.io/github/actions/workflow/status/ad2ien/ideal-wages-calculator-vue/check.yml?label=check&logo=github)
+[![GitHub page workflow status](https://img.shields.io/github/actions/workflow/status/ad2ien/ideal-wages-calculator-vue/publish.yml?label=github%20page&logo=github)](https://ad2ien.github.io/ideal-wages-calculator-vue/)
 [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 [![Vue.js](https://img.shields.io/badge/Framework-Vue.js-4FC08D.svg?logo=vue.js)](https://vuejs.org)
 [![Typescript](https://img.shields.io/badge/Framework-Typescript-3178C6.svg?logo=typescript)](https://www.typescriptlang.org)
