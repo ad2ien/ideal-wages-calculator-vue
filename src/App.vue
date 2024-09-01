@@ -5,7 +5,11 @@ import AlertBox from './AlertBox.vue'
 import { doInit } from './models/init'
 import { useWageStore } from './stores/wage'
 import { usePresetStore } from './stores/presets'
+import { useTheme } from 'vuetify'
 
+const theme = useTheme()
+
+const lightDarkTheme = ref('dark')
 const loading = ref(true)
 
 const wageStore = useWageStore()
@@ -21,30 +25,29 @@ function handlePreset(value: any) {
   }
   loading.value = false
 }
+
+function toggleTheme() {
+  if (lightDarkTheme.value === 'dark') {
+    lightDarkTheme.value = 'light'
+  } else {
+    lightDarkTheme.value = 'dark'
+  }
+  theme.global.name.value = lightDarkTheme.value
+}
 </script>
 
 <template>
   <v-card class="mx-auto" max-width="1000">
     <v-layout>
       <v-app-bar>
-        <template v-slot:prepend>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
-        </template>
-
         <v-app-bar-title>Ideal Wage Calculator 💸</v-app-bar-title>
 
         <v-spacer></v-spacer>
 
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
+        <v-btn icon id="mode-switcher" @click="toggleTheme">
+          <v-icon>
+            {{ lightDarkTheme === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny' }}
+          </v-icon>
         </v-btn>
       </v-app-bar>
 
