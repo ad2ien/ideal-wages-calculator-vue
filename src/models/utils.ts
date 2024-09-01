@@ -1,6 +1,8 @@
 import { toRaw } from 'vue'
 import type { Criteria, Preset, ResponseCriteria, ResponsePreset } from './types'
 
+const PARAMETER_WEIGHT = 10
+
 export function presetResponseToPreset(response: ResponsePreset): Preset[] {
   return response.map((item) => ({
     job: item.job,
@@ -38,6 +40,7 @@ export function criteriasFromResponse(responseCriterias: ResponseCriteria[]): Cr
 export function computeWage(baseWage: number, criteriasInput: any): number {
   const criterias = toRaw(criteriasInput) as Criteria[]
   return Math.round(
-    baseWage + criterias.reduce((sum, item) => sum + item.coefficient * item.mark, 0)
+    baseWage +
+      PARAMETER_WEIGHT * criterias.reduce((sum, item) => sum + item.coefficient * item.mark, 0)
   )
 }
