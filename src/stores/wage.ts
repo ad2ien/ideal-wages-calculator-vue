@@ -34,7 +34,6 @@ export const useWageStore = defineStore('wage', () => {
   }
 
   function updateWage() {
-    console.log('updateWage !! ')
     computedWage.value = computeWage(baseWage.value, criterias.value)
   }
 

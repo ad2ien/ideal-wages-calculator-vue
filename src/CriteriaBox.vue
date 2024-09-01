@@ -41,7 +41,6 @@ import { useWageStore } from './stores/wage'
 defineProps(['criteria']) as Criteria
 
 function updateCriteria() {
-  console.log('updateCriteria')
   const wageStore = useWageStore()
   wageStore.updateWage()
 }
