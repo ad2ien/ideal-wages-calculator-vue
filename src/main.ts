@@ -9,9 +9,13 @@ import * as directives from 'vuetify/directives'
 
 import App from './App.vue'
 import { createPinia } from 'pinia'
+import { VNumberInput } from 'vuetify/labs/components'
 
 const vuetify = createVuetify({
-  components,
+  components:{
+    ...components,
+    VNumberInput
+  },
   directives,
   theme: {
     defaultTheme: 'dark'

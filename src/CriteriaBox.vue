@@ -1,7 +1,6 @@
 <template>
   <v-row align="center" justify="center" no-gutters>
     <v-col cols="12" md="6">
-      <!-- <pre>{{ criteria.description?.general }}</pre> -->
       <v-sheet class="pa-1 ma-1">
         <v-card :title="criteria.id + criteria.label">
           <v-card-text>
@@ -29,7 +28,5 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
 defineProps(['criteria'])
 </script>

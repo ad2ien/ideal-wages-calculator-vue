@@ -24,31 +24,16 @@ export type Criteria = {
   mark: number
 }
 
-export type ResponsePreset = CoefParam[]
-
-export function jsonToResponseCriteria(jsonData: any): ResponseCriteria[] {
-  return jsonData.map((item: any) => ({
-    id: item.id,
-    label: item.label,
-    defaultCoefficient: item.coefficient,
-    description: {
-      general: item.description.general,
-      min: item.description.min,
-      max: item.description.max
-    }
-  }))
+export type Preset = {
+  job: string
+  params: CoefParam[]
 }
 
-export function criteriasFromResponse(responseCriterias: ResponseCriteria[]): Criteria[] {
-  return responseCriterias.map((item) => ({
-    id: item.id,
-    description: {
-      general: item.description.general,
-      min: item.description.min,
-      max: item.description.max
-    },
-    label: item.label,
-    coefficient: item.defaultCoefficient,
-    mark: 0
-  }))
+export type ResponsePresetJob = {
+  id: string
+  value: number
 }
+export type ResponsePreset = {
+  job: string
+  params: ResponsePresetJob[]
+}[]

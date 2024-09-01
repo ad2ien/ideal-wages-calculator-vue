@@ -1,6 +1,6 @@
-import type { Criteria } from '@/models/types'
+import type { CoefParam, Criteria } from '@/models/types'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, toRaw } from 'vue'
 
 export const useWageStore = defineStore('wage', () => {
   const baseWage = ref(700)
@@ -18,5 +18,16 @@ export const useWageStore = defineStore('wage', () => {
     console.warn('not implemented setCriterias', id, mark, coef)
   }
 
-  return { baseWage, criterias, initCriterias, setBaseWage, setCriteria }
+  function getCriterias() {
+    return toRaw(criterias.value)
+  }
+
+  function setPreset(preset: CoefParam[]) {
+    criterias.value.forEach((item) => {
+      const elt = preset.find((param) => param.id === item.id)
+      item.mark = elt?.mark ?? 0
+    })
+  }
+
+  return { baseWage, criterias, initCriterias, getCriterias, setBaseWage, setCriteria, setPreset }
 })
