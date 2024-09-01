@@ -5,7 +5,7 @@
 [![Typescript](https://img.shields.io/badge/Framework-Typescript-3178C6.svg?logo=typescript)](https://www.typescriptlang.org)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?logo=apache)](https://opensource.org/licenses/MIT)
 
-A Vue.js version of <https://github.com/ad2ien/ideal-wages-calculator>
+A Vue.js version of <https://github.com/ad2ien/ideal-wages-calculator> and is mostly used as playground
 
 ## Description
 
