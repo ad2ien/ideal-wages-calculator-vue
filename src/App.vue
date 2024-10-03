@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue'
-import CriteriaBox from './CriteriaBox.vue'
-import AlertBox from './AlertBox.vue'
-import { doInit } from './models/init'
-import { useWageStore } from './stores/wage'
-import { usePresetStore } from './stores/presets'
 import { useTheme } from 'vuetify'
+import AlertBox from './AlertBox.vue'
+import CriteriaBox from './CriteriaBox.vue'
+import { doInit } from './models/init'
+import ProfileNameInputModal from './ProfileNameInputModal.vue'
+import { useAlertStore } from './stores/alert'
+import { usePresetStore } from './stores/presets'
+import { useWageStore } from './stores/wage'
+
+// TODO use env var
+const BASE_URL = 'http://localhost:5173/'
 
 const theme = useTheme()
+const urlParams = new URLSearchParams(window.location.search)
+const alertStore = useAlertStore()
 
 const lightDarkTheme = ref('dark')
 const loading = ref(true)
@@ -34,6 +41,19 @@ function toggleTheme() {
   }
   theme.global.name.value = lightDarkTheme.value
 }
+
+async function generateUrlAndClipboard(profileName: string): Promise<void> {
+  console.log('profileName', profileName)
+  const params = wageStore.criterias.map((c) => `${c.id}=${c.mark}`).join(',')
+  const url = `${BASE_URL}?${params}&profil-name=${profileName}`
+  try {
+    await navigator.clipboard.writeText(url)
+    alertStore.setAlert(`${url} copied to clipboard`)
+  } catch (err) {
+    console.error('Error copying text to clipboard:', err)
+    alertStore.setAlert(`error copying${url} to clipboard`)
+  }
+}
 </script>
 
 <template>
@@ -42,7 +62,7 @@ function toggleTheme() {
       <v-app-bar>
         <v-app-bar-title>Ideal Wage Calculator 💸</v-app-bar-title>
 
-        <v-spacer></v-spacer>
+        <v-spacer />
 
         <v-btn icon id="mode-switcher" @click="toggleTheme">
           <v-icon>
@@ -54,6 +74,9 @@ function toggleTheme() {
       <v-main>
         <v-container fluid>
           <AlertBox />
+          <div class="my-4 text-center">
+            <ProfileNameInputModal @generateUrlCallback="generateUrlAndClipboard" />
+          </div>
 
           <v-row>
             <v-col cols="4">
