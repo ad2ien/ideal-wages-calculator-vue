@@ -9,9 +9,8 @@ import { useAlertStore } from './stores/alert'
 import { usePresetStore } from './stores/presets'
 import { useWageStore } from './stores/wage'
 
-// TODO use env var
-const BASE_URL = 'http://localhost:5173/'
-
+const BASE_DOMAIN =
+  import.meta.env.VITE_BASE_DOMAIN || 'https://ad2ien.github.io/ideal-wages-calculator-vue/'
 const theme = useTheme()
 
 const alertStore = useAlertStore()
@@ -44,7 +43,7 @@ function toggleTheme() {
 
 async function generateUrlAndClipboard(profileName: string): Promise<void> {
   const params = wageStore.criterias.map((c) => `${c.id}=${c.mark}`).join('&')
-  const url = `${BASE_URL}?${params}&job=${profileName}`
+  const url = `${BASE_DOMAIN}?${params}&job=${profileName}`
   try {
     await navigator.clipboard.writeText(url)
     alertStore.setAlert(`${url} copied to clipboard`)

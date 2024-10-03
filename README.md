@@ -32,6 +32,14 @@ The result here : <https://ad2ien.github.io/ideal-wages-calculator-vue/>
 npm install
 ```
 
+Create a `.env` file containing
+
+```env
+VITE_BASE_DOMAIN="http://localhost:5173/"
+```
+
+Then start
+
 ```bash
 npm run dev
 ```
