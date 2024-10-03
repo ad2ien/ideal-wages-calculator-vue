@@ -13,7 +13,7 @@ import { useWageStore } from './stores/wage'
 const BASE_URL = 'http://localhost:5173/'
 
 const theme = useTheme()
-const urlParams = new URLSearchParams(window.location.search)
+
 const alertStore = useAlertStore()
 
 const lightDarkTheme = ref('dark')
@@ -43,9 +43,8 @@ function toggleTheme() {
 }
 
 async function generateUrlAndClipboard(profileName: string): Promise<void> {
-  console.log('profileName', profileName)
-  const params = wageStore.criterias.map((c) => `${c.id}=${c.mark}`).join(',')
-  const url = `${BASE_URL}?${params}&profil-name=${profileName}`
+  const params = wageStore.criterias.map((c) => `${c.id}=${c.mark}`).join('&')
+  const url = `${BASE_URL}?${params}&job=${profileName}`
   try {
     await navigator.clipboard.writeText(url)
     alertStore.setAlert(`${url} copied to clipboard`)

@@ -1,6 +1,6 @@
+import { usePresetStore } from '@/stores/presets'
 import { useWageStore } from '@/stores/wage'
 import { type ResponsePreset } from './types'
-import { usePresetStore } from '@/stores/presets'
 import { criteriasFromResponse, jsonToResponseCriteria } from './utils'
 
 const DATA_BASE_URL = 'https://raw.githubusercontent.com/ad2ien/ideal-wages-calculator/main/'
@@ -13,6 +13,7 @@ export async function doInit() {
   const presetStore = usePresetStore()
   await getCriterias(wageStore)
   await fetchPresets(presetStore)
+
   if (presetStore.getSelectedPreset()) {
     wageStore.setPreset(presetStore.getSelectedPreset()!!)
   } else {
