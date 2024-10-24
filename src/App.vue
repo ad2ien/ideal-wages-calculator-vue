@@ -86,7 +86,11 @@ async function generateUrlAndClipboard(profileName: string): Promise<void> {
                 :step="10"
                 v-model="baseWage"
                 @update:modelValue="wageStore.updateWage()"
-              ></v-number-input>
+              >
+                <v-tooltip activator="parent" location="top"
+                  >Something to survive on whatever you do in life</v-tooltip
+                >
+              </v-number-input>
             </v-col>
             <v-col cols="4">
               <v-combobox
