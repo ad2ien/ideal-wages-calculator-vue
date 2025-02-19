@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { toRaw } from 'vue'
 import type { Criteria, Preset, ResponseCriteria, ResponsePreset } from './types'
 

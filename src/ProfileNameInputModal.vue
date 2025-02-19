@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, type Ref } from 'vue'
 const emit = defineEmits(['generateUrlCallback'])
 
 const profileName = ref('')
 
-function closeModal(isActive: any) {
+function closeModal(isActive: Ref<boolean>) {
   console.log('close modal')
   emit('generateUrlCallback', profileName.value)
   isActive.value = false

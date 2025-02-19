@@ -23,10 +23,13 @@ const { baseWage } = toRefs(wageStore)
 const presetStore = usePresetStore()
 doInit()
 
-function handlePreset(value: any) {
+function handlePreset(
+  // eslint-disable-next-line
+  value: any
+) {
   const marksPreset = presetStore.getMarks()
   if (marksPreset) {
-    wageStore.setPreset(marksPreset!!)
+    wageStore.setPreset(marksPreset!)
     wageStore.updateWage()
   }
   loading.value = false
