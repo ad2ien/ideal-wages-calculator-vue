@@ -41,7 +41,7 @@ function toggleTheme() {
   } else {
     lightDarkTheme.value = 'dark'
   }
-  theme.global.name.value = lightDarkTheme.value
+  theme.change(lightDarkTheme.value)
 }
 
 async function generateUrlAndClipboard(profileName: string): Promise<void> {

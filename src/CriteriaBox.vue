@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center" justify="center" no-gutters>
+  <v-row align="center" justify="center" density="compact">
     <v-col cols="12" md="6">
       <v-sheet class="pa-1 ma-1">
         <v-card :title="criteria.id + criteria.label">
